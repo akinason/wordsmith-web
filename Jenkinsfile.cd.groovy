@@ -10,7 +10,7 @@ pipeline {
     }
 
     parameters{
-        string(nane: "IMAGE_TAG", description: "The  image tag to be deployed")
+        string(name: "IMAGE_TAG", description: "The  image tag to be deployed")
     }
 
     stages {
