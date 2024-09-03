@@ -23,7 +23,7 @@ pipeline {
                         def taskDefJson = sh(
                             script: """
                                 aws ecs describe-task-definition \\
-                                --task-defintion arn:aws:ecs:eu-central-1:235364608836:task-definition/WordsmithWeb \\
+                                --task-definition ${env.TASK_DEFINITION_FAMILY} \\
                                 --query "taskDefinition"
                             """,
                             returnStdout: true
