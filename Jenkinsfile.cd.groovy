@@ -41,7 +41,7 @@ pipeline {
                         taskDef.remove("taskDefinitionArn")
                         taskDef.remove("revision")
                         taskDef.remove("status")
-                        taskDef.remove("requiredAttributes")
+                        // taskDef.remove("requiredAttributes")
                         taskDef.remove("compatibilities")
                         taskDef.remove('registeredAt')
                         taskDef.remove("registeredBy")
