@@ -65,6 +65,7 @@ pipeline {
                 }
             }
         }
+
         stage("Push to ECR") {
             steps {
                 script{
@@ -73,6 +74,16 @@ pipeline {
                         sh "aws ecr get-login-password --region ${env.AWS_REGION} | docker login --username AWS --password-stdin ${env.IMAGE_REGISTRY}"
                         sh "docker push ${env.IMAGE_REGISTRY}/wordsmith-web:${tag}"
                     }
+                }
+            }
+        }
+
+        stage("Deploy") {
+            when {branch: 'main'}
+            steps {
+                script{
+                    def tag = getDockerTag()
+                    build job: 'wordsmith-web-cd', parameters: [string(name: 'IMAGE_TAG', value: "${tag}")], wait: false
                 }
             }
         }
