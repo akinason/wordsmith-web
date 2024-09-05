@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent {label 'linux'} 
 
     environment {
         IMAGE_REGISTRY = "235364608836.dkr.ecr.eu-central-1.amazonaws.com"
